@@ -1,0 +1,21 @@
+header,footer {background: linear-gradient(to bottom, #95D2F3 15%, #019CDB 25%, #0054A6 60%);
+                        height:20%;}
+
+         body {
+               font-family:sans-serif;
+               padding-bottom: 1px;
+               padding-left: 1px;
+               padding-top: 1px;
+               padding-right: 1px;
+               border-style:solid;}
+
+         h1 {text-align:center;
+             }    
+
+         header p {
+                   font-size : 1.5em;
+                   font-weight : bold;}
+
+         header p span {font-style:italic;}
+
+         #special {text-decoration: underline;}
