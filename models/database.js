@@ -16,10 +16,13 @@ conn.connect((err) => {
     });
 });
 
-function simpleQuery () {
-    conn.query('Select * from Routes', (err, result, fields) => {
+function route (route, stop) {
+    conn.query(`Select ${stop} from ${route}`, (err, result) => {
         if (err) throw err;
         return "Result: " + result[1].numberOfStops;
     });
+    
 }
+
+module.exports('simpleQuery');
 
