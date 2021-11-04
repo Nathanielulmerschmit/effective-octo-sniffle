@@ -1,4 +1,4 @@
-const {simpleQuery} = require('/ShuttleProject/models/database.js');
+//const {simpleQuery} = require('/ShuttleProject/models/database.js');
 
 function getFormInfo(){
     const start = document.getElementById("routeStart").value;
@@ -14,8 +14,9 @@ function processFormInfo(formInfo){
     document.writeln('<p>Your departure stop is ' + formInfo[0] + '. Your destination is ' + formInfo[1] +
 	'. You chose the ' + formInfo[2] + ' route at '+ formInfo[3] +' </p>');  
 }
-
+/*
 async function printQuery () {
     const result = await simpleQuery();
     document.writeln(result);
 }
+*/

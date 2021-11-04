@@ -24,5 +24,5 @@ function route (route, stop) {
     
 }
 
-module.exports('simpleQuery');
+module.exports = ('simpleQuery');
 

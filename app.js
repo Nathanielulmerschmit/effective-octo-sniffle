@@ -18,8 +18,8 @@ app.use(cookieParser());
 
 app.use(express.static(path.join('./public')));
 app.get('/', (req, res) => {
-    res.send('Hello! What\'s up?');
-    //res.sendFile('Hello! up and running!');
+    //res.send('Hello! What\'s up?');
+    res.sendFile('index.html');
 });
 
 //app.use('/', indexRouter);
@@ -45,7 +45,7 @@ app.use((err, req, res, next) => {
 
 
 app.listen(4000, () => {
-    console.log('listening on port 3000!');
+    console.log('listening on port 4000!');
 });
 
 module.exports = app;
