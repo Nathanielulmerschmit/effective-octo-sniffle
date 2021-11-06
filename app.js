@@ -26,11 +26,12 @@ app.get('/', (req, res) => {
 app.use('/users', usersRouter);
 app.use('/shuttle', shuttleRouter);
 
-
+/*
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     next(createError(404));
 });
+*/
 
 
 // error handler
@@ -39,8 +40,8 @@ app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development'? err: {};
     // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+    res.render(err.status || 500);
+    res.send('error');
 });
 
 
