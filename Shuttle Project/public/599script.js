@@ -1,28 +1,37 @@
 function getFormInfo() {
+    //the info the user inputs.
     const start = document.getElementById("routeStart").value;
     const end = document.getElementById("routeEnd").value;
     const route = document.getElementById("txtList").value;
-    let timeArray = [0, 15, 30]; //timeArray will be changed to the database array
+    var formInfo = [start, end, route];
+    
+    //the array of times retreived from the database. 
+    //timeArray will be changed to the database array.
+    let timeArray = [0, 15, 30];
+    
+    //current time variables.
     let arriveTime = new Date();
     let hours = arriveTime.getHours();
     let nextHour = hours + 1;
     let minutes = arriveTime.getMinutes();
+    
+    //the time the shuttle leaves.
     let leaveTime = "";
     
-    var formInfo = [start, end, route];
-
     processFormInfo(formInfo);
     
     outputTime(hours, nextHour, minutes, timeArray, leaveTime);
 }
 
 function processFormInfo(formInfo){
+    //prints the info sent to the database
     document.writeln('<p>Your departure stop is ' + formInfo[0] + '. Your destination is ' + formInfo[1] +
-	'. You chose the ' + formInfo[2] + ' </p>');  
+	'. You chose the ' + formInfo[2] + ' route.' + ' </p>');  
 }
 
 
 function outputTime(hours, nextHour, minutes, timeArray, leaveTime){
+    //does the calculations for what time to output.
     const originalHours = hours;
    
     if(hours > 12){
