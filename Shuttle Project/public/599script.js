@@ -1,17 +1,16 @@
-function getFormInfo(){
+function getFormInfo() {
     const start = document.getElementById("routeStart").value;
     const end = document.getElementById("routeEnd").value;
     const route = document.getElementById("txtList").value;
-    var arriveTime = new Date(document.getElementById("arriveTime").value);
-    let timeArray = [0, 15, null]; //timeArray will be changed to the database array
+    let timeArray = [0, 15, 30]; //timeArray will be changed to the database array
+    let arriveTime = new Date();
     let hours = arriveTime.getHours();
     let nextHour = hours + 1;
     let minutes = arriveTime.getMinutes();
     let leaveTime = "";
     
-    var formInfo = [start, end, route,];
-    
-    
+    var formInfo = [start, end, route];
+
     processFormInfo(formInfo);
     
     outputTime(hours, nextHour, minutes, timeArray, leaveTime);
@@ -24,7 +23,7 @@ function processFormInfo(formInfo){
 
 
 function outputTime(hours, nextHour, minutes, timeArray, leaveTime){
-    const originalHours = hours
+    const originalHours = hours;
    
     if(hours > 12){
         hours = hours - 12;
@@ -57,11 +56,11 @@ function outputTime(hours, nextHour, minutes, timeArray, leaveTime){
     }
     
     if (originalHours > 12){ 
-        document.writeln('<p> Your departure time is ' + leaveTime + ' PM please do not be late </p>');
+        document.writeln('<p> Your departure time is ' + leaveTime + ' PM please do not be late. </p>');
     }
 
     else{
-        document.writeln('<p> Your departure time is ' + leaveTime + ' AM please do not be late </p>');
+        document.writeln('<p> Your departure time is ' + leaveTime + ' AM please do not be late. </p>');
     }
 
 }
