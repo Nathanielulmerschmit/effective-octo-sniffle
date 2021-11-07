@@ -15,7 +15,8 @@ class Database{
             this.connection.query(sql, args, (err, rows) => {
                 if (err) 
                     return reject (err);
-                const times = []
+                var times = [];
+                console.log(rows);
                 times.push(rows[0].time1);
                 times.push(rows[0].time2);
                 times.push(rows[0].time3);
