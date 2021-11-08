@@ -31,14 +31,16 @@ exports.shuttle_times_get =  function (req, res) {
         departArray = getDepartTime(date, time1);
         arrivalArray = getArrivalTime(departArray, time2);
         console.log(departArray[1]);
-        console.log(arrivalArray[1])
-        finalArray.push(departArray[1]);
-        finalArray.push(arrivalArray[1]);
-        res.send(JSON.stringify(finalArray.toString()));
+        console.log(arrivalArray[1]);
+
+        res.send(JSON.stringify({
+            departTime: departArray[1],
+            destTime: arrivalArray[1] 
+        }));
     }
     ).catch( err => { console.log(err);})
 
 }
-
+  
 module.exports = exports;
 
