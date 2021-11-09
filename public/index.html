@@ -15,7 +15,7 @@
    	
    		<header>
             <h1>Shuttle Routes</h1>
-			<p><img id ="burger" src = "cu_logo_white.png" class = "images"
+			<p><img id ="logo" src = "cu_logo_white.png" class = "images"
 				alt = "Creighton Logo" /></p>
 			<br>
             <p>Please enter where you are and where you want to go</p>
@@ -37,20 +37,38 @@
         	</p>
          	
             <p>
-            	<label>Shuttle Route Starting Point:
-               		<input type = "text" id="routeStart" autofocus placeholder="123 cuming street" required />
+            	<label for = "routeStart">Shuttle Route Starting Point:
+               		<input type = "text" id="routeStart"  list = routeStartLocation placeholder="Start Destination" required/>
+						<datalist id = "routeStartLocation">
+							<option value = "DeglmanCircle">
+							<option value = "SokolRyan">
+							<option value = "HarperCenter">
+							<option value = "KenefickHall">  
+							<option value = "HeiderHall">
+							<option value = "SwansonHall">
+							<option value = "KiewitHall">
+							<option value = "CrissComplex">  
+							<option value = "BurtStStairs">
+							<option value = "24thAndBurtSt">        
+						</datalist>
             	</label>
          	</p>
            
             <p>
-            	<label>Shuttle Route Ending Point:
-               		<input type = "text" id="routeEnd" autofocus placeholder="123 cuming street" required /> 
-            	</label>
-         	</p>
-            
-            <p>
-            	<label>Please enter the time you made you'll arrive at the bus stop:
-               		<input id="arriveTime" type = "datetime-local" placeholder = "mm/dd/yyyy hh:mm mm" />     
+            	<label for = "routeEnd">Shuttle Route Ending Point:
+               		<input type = "text" id="routeEnd" list = "routeEndLocation" placeholder="End Destination" required /> 
+						<datalist id = "routeEndLocation">
+							<option value = "DeglmanCircle">
+							<option value = "SokolRyan">
+							<option value = "HarperCenter">
+							<option value = "KenefickHall">  
+							<option value = "HeiderHall">
+							<option value = "SwansonHall">
+							<option value = "KiewitHall">
+							<option value = "CrissComplex">  
+							<option value = "BurtStStairs">
+							<option value = "24thAndBurtSt">        
+						</datalist>
             	</label>
          	</p>
 
