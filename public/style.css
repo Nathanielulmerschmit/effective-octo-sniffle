@@ -1,5 +1,16 @@
 header,footer {background: linear-gradient(to bottom, #95D2F3 15%, #019CDB 25%, #0054A6 60%);
     height:20%;}
+header{
+
+background-color:#002E6D; width: 100%; height: 100%;
+
+}
+
+.images{
+float: left;
+position: relative;
+margin: 10px 15px 15px 10px;
+}
 
 body {
 font-family:sans-serif;
@@ -8,14 +19,12 @@ padding-left: 1px;
 padding-top: 1px;
 padding-right: 1px;
 border-style:solid;}
+}
 
 h1 {text-align:center;
 }    
-
-header p {
-font-size : 1.5em;
-font-weight : bold;}
-
+@ -19,3 +24,4 @@ header,footer {background: linear-gradient(to bottom, #95D2F3 15%, #019CDB 25%,
 header p span {font-style:italic;}
 
 #special {text-decoration: underline;}
+footer{background-color: #0054A6; height: 20px;}
