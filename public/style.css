@@ -1,0 +1,23 @@
+
+header{
+background-color:#002E6D; width: 100%; height: 100%;
+}
+
+h1 {text-align:center;}
+
+.images{
+    position: absolute;
+    top: 28px;
+    left: 16px;
+    font-size: 10px;
+}
+
+body {
+font-family:sans-serif;
+}
+
+footer{background-color: #002E6D; height: 20px;}
+
+header p span {font-style:italic;}
+
+#special {text-decoration: underline;}

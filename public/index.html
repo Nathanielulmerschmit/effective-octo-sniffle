@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+     
+      <meta charset="utf-8">
+      <title>599 webpage</title>
+
+      <link href="style.css" rel="stylesheet" type="text/CSS">
+      <script src="main.js"></script>
+
+   </head>
+
+   	<body>
+   	
+   		<header>
+            <h1>Shuttle Routes</h1>
+			<p><img id ="logo" src = "cu_logo_white.png" class = "images"
+				alt = "Creighton Logo" /></p>
+			<br>
+            <p>Please enter where you are and where you want to go</p>
+         </header>
+
+
+      	<form method = "post" action = "#" autocomplete="on">
+            
+            <p>
+				<label for = "txtList">Pick Your Route:
+            		<input type = "text" id = "txtList" placeholder = "Select from the list of shuttle routes" list = "routes" />
+            			<datalist id = "routes">
+               				<option value = "East">
+               				<option value = "West">
+                            <option value = "combined East/West">  
+               				<option value = "Burt">  
+            			</datalist>
+        		</label>
+        	</p>
+         	
+            <p>
+            	<label for = "routeStart">Shuttle Route Starting Point:
+               		<input type = "text" id="routeStart"  list = routeStartLocation placeholder="Start Destination" required/>
+						<datalist id = "routeStartLocation">
+							<option value = "DeglmanCircle">
+							<option value = "SokolRyan">
+							<option value = "HarperCenter">
+							<option value = "KenefickHall">  
+							<option value = "HeiderHall">
+							<option value = "SwansonHall">
+							<option value = "KiewitHall">
+							<option value = "CrissComplex">  
+							<option value = "BurtStStairs">
+							<option value = "24thAndBurtSt">        
+						</datalist>
+            	</label>
+         	</p>
+           
+            <p>
+            	<label for = "routeEnd">Shuttle Route Ending Point:
+               		<input type = "text" id="routeEnd" list = "routeEndLocation" placeholder="End Destination" required /> 
+						<datalist id = "routeEndLocation">
+							<option value = "DeglmanCircle">
+							<option value = "SokolRyan">
+							<option value = "HarperCenter">
+							<option value = "KenefickHall">  
+							<option value = "HeiderHall">
+							<option value = "SwansonHall">
+							<option value = "KiewitHall">
+							<option value = "CrissComplex">  
+							<option value = "BurtStStairs">
+							<option value = "24thAndBurtSt">        
+						</datalist>
+            	</label>
+         	</p>
+
+         	<p>
+            	<button id="submit">SUBMIT</button>
+         	</p>  
+
+			
+
+      	</form>
+   	
+		  <div id = "responseField">
+
+		  </div>
+
+   		<footer>
+   		</footer>       
+   	</body>
+</html>
+  
+
+
