@@ -18,6 +18,7 @@ exports.shuttle_times_get =  function (req, res) {
         time1.push(times[2]);
         console.log(time1[0]);
         console.log(times[2]);
+
         return Database.query(`Select * from ${req.params.id} where stopLoc = \'${req.params.id_3}\'`);
     }
     ).then( times2 => {
@@ -25,7 +26,7 @@ exports.shuttle_times_get =  function (req, res) {
         time2.push(times2[0]);
         time2.push(times2[1]);
         time2.push(times2[2]);
-        return Database.close();
+        //return Database.close();
         }, err => { Database.close().then( () => { console.log(err);})}
     ).then(() => {
         departArray = getDepartTime(date, time1);
