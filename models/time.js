@@ -100,8 +100,8 @@ exports.getArrivalTime =  (departArray, timeArray) => {
         departMinute = timeArray[2];
     }
     else {
-        leaveTime = nextHour + ":0" + timeArray[0];
         departHour = nextHour;
+        leaveTime = nextHour + ":0" + timeArray[0];
         departMinute = timeArray[0];
     }
     
