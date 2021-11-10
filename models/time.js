@@ -85,7 +85,11 @@ exports.getArrivalTime =  (departArray, timeArray) => {
 
     
     if (minutes < timeArray[0] ){
-        leaveTime = hours + ":" + timeArray[0];
+        if (minutes >= 10){
+            leaveTime = nextHour + ":" + timeArray[0];}
+    
+        else{
+            leaveTime = nextHour + ":0" + timeArray[0];}
         departHour = hours;
         departMinute = timeArray[0];
     }
@@ -105,7 +109,6 @@ exports.getArrivalTime =  (departArray, timeArray) => {
 
         else{
         leaveTime = nextHour + ":0" + timeArray[0];}
-       
         departHour = nextHour;
         departMinute = timeArray[0];
     }
