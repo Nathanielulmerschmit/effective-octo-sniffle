@@ -1,3 +1,127 @@
+
+exports.isShuttleOperational = (finalArray, statusArr) => {
+    retArr = []
+    if (!checkShuttleOpen(finalArray, statusArr)) {
+        retArr.push(false);
+    }
+    else {
+        retArr.push(true);
+    }
+    if (!checkShuttleBreak(finalArray, statusArr)) {
+        retArr.push(false) 
+    }
+    else {
+        retArr.push(true)
+    }
+    return retArr;
+};
+
+function checkShuttleBreak(finalArray, statusArr) {
+    const originalHours = parseInt(finalArray[0]);
+    var departHour = parseInt(finalArray[1].slice(0,2));
+    var departMinute = parseInt(finalArray[1].slice(3));
+    var arrivalHour = parseInt(finalArray[2].slice(0,2));
+    var arrivalMinute = parseInt(finalArray[2].slice(3));
+
+    console.log(statusArr[2]);
+    const break1StartHour = parseInt(statusArr[2].slice(0,2));
+    const break1StartMinute = parseInt(statusArr[2].slice(3));
+    const break1EndHour = parseInt(statusArr[3].slice(0,2));
+    const break1EndMinute = parseInt(statusArr[3].slice(3));
+    const break2StartHour = parseInt(statusArr[4].slice(0,2));
+    const break2StartMinute = parseInt(statusArr[4].slice(3));
+    const break2EndHour = parseInt(statusArr[5].slice(0,2));
+    const break2EndMinute = parseInt(statusArr[5].slice(3));
+
+    if (originalHours > 12) {
+        departHour += 12;
+        arrivalHour += 12;
+    }
+
+    departDate = new Date();
+    departDate.setHours(departHour);
+    departDate.setMinutes(departMinute);
+
+    arrivalDate = new Date();
+    arrivalDate.setHours(arrivalHour);
+    arrivalDate.setMinutes(arrivalMinute);
+
+    break1StartDate = new Date();
+    break1StartDate.setHours(break1StartHour);
+    break1StartDate.setMinutes(break1StartMinute);
+
+    break1EndDate = new Date();
+    break1EndDate.setHours(break1EndHour);
+    break1EndDate.setMinutes(break1EndMinute);
+
+    break2StartDate = new Date();
+    break2StartDate.setHours(break2StartHour);
+    break2StartDate.setMinutes(break2StartMinute);
+
+    break2EndDate = new Date();
+    break2EndDate.setHours(break2EndHour);
+    break2EndDate.setMinutes(break2EndMinute);
+
+    if (departDate > break1StartDate && departDate < break1EndDate) {
+        return false;
+    }
+    else if (arrivalDate > break1StartDate && arrivalDate < break1EndDate) {
+        return false;
+    }
+
+    if (departDate > break2StartDate && departDate < break2EndDate) {
+        return false;
+    }
+    else if (arrivalDate > break2StartDate && arrivalDate < break2EndDate) {
+        return false;
+    }
+    return true;
+};
+
+function checkShuttleOpen(finalArray, statusArr) {
+    const originalHours = parseInt(finalArray[0]);
+    var departHour = parseInt(finalArray[1].slice(0,2));
+    var departMinute = parseInt(finalArray[1].slice(3));
+    var arrivalHour = parseInt(finalArray[2].slice(0,2));
+    var arrivalMinute = parseInt(finalArray[2].slice(3));
+
+    const startHour = parseInt(statusArr[0].slice(0,2));
+    const startMinute = parseInt(statusArr[0].slice(3));
+    const endHour = parseInt(statusArr[1].slice(0,2));
+    const endMinute = parseInt(statusArr[1].slice(3));
+
+    
+
+    if (originalHours > 12) {
+        departHour += 12;
+        arrivalHour += 12;
+    }
+
+    departDate = new Date();
+    departDate.setHours(departHour);
+    departDate.setMinutes(departMinute);
+
+    arrivalDate = new Date();
+    arrivalDate.setHours(arrivalHour);
+    arrivalDate.setMinutes(arrivalMinute);
+
+    startDate = new Date();
+    startDate.setHours(startHour);
+    startDate.setMinutes(startMinute);
+
+    endDate = new Date();
+    endDate.setHours(endHour);
+    endDate.setMinutes(endMinute);
+
+    if (departDate <= startDate || departDate > endDate) {
+        return false;
+    }
+    else if ((arrivalDate > endDate)) {
+        return false;
+    }
+    return true;
+};
+
 exports.getDepartTime =  (date, timeArray) => {
     let hours = date.getHours();
     let nextHour = hours + 1;
@@ -89,8 +213,6 @@ exports.getArrivalTime =  (departArray, timeArray) => {
     let departHour;
     let departMinute;
     const returnArray = [];
-   
-
 
     hours.toString();
     nextHour.toString();
