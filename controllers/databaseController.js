@@ -32,8 +32,8 @@ exports.shuttle_times_scheduled_get = (req, res) => {
   let arrivalArray = [];
   let finalArray = [];
   Database.queryStatus(
-    `Select satStart, satEnd, main1Start, main1End, main2Start, main2End from Routes where routeName = \'${req.params.id}\'`,
-    "sat"
+    `Select ${day}Start, ${day}End, main1Start, main1End, main2Start, main2End from Routes where routeName = \'${req.params.id}\'`,
+    day
   )
     .then((statusTimes) => {
       console.log(statusTimes.toString());
