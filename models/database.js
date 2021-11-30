@@ -31,32 +31,32 @@ class Database{
                     return reject (err);
                 var statusTimes = [];
                 console.log(rows);
-
-                if (args = 'mon') {
+                console.log(args);
+                if (args == 'mon') {
                     statusTimes.push(rows[0].monStart);
                     statusTimes.push(rows[0].monEnd);
                 }
-                else if (args = 'tue') {
+                else if (args == 'tue') {
                     statusTimes.push(rows[0].tueStart);
                     statusTimes.push(rows[0].tueEnd);
                 }
-                else if (args = 'wed') {
+                else if (args =='wed') {
                     statusTimes.push(rows[0].wedStart);
                     statusTimes.push(rows[0].wedEnd);
                 }
-                else if (args = 'thu') {
+                else if (args == 'thu') {
                     statusTimes.push(rows[0].thuStart);
                     statusTimes.push(rows[0].thuEnd);
                 }
-                else if (args = 'fri') {
+                else if (args == 'fri') {
                     statusTimes.push(rows[0].friStart);
                     statusTimes.push(rows[0].friEnd);
                 }
-                else if (args = 'sat') {
+                else if (args == 'sat') {
                     statusTimes.push(rows[0].satStart);
                     statusTimes.push(rows[0].satEnd);
                 }
-                else if (args = 'sun') {
+                else if (args == 'sun') {
                     statusTimes.push(rows[0].sunStart);
                     statusTimes.push(rows[0].sunEnd);
                 }
