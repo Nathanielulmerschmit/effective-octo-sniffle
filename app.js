@@ -1,4 +1,4 @@
-var helmet = require('helmet');
+
 var express = require('express');
 
 var createError = require('http-errors');
@@ -10,7 +10,6 @@ var shuttleRouter = require('./routes/shuttle');
 
 var app = express();
 
-app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
