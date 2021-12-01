@@ -4,6 +4,7 @@ var {
   getArrivalTime,
   isShuttleOperational,
 } = require("../models/time.js");
+var {DateTime} = require('luxon');
 
 const weekday = new Array(7);
 weekday[0] = "sun";
@@ -19,7 +20,6 @@ exports.shuttle_times_scheduled_get = (req, res) => {
   var scheduledHours = Number(scheduledTime.substring(0, 2));
   var scheduledMin = Number(scheduledTime.substring(3, 5));
   var date = new Date();
-
   var day = weekday[date.getDay()];
   date.setHours(scheduledHours);
   date.setMinutes(scheduledMin);
@@ -155,7 +155,9 @@ function getNormalTime(times) {
 
 exports.shuttle_times_get = function (req, res) {
   var date = new Date();
-
+  var timeZone = DateTime.now().setZone("America/Chicago");
+  date.setHours(timeZone.hour);
+  date.setMinutes(timeZone.minute);
   var day = weekday[date.getDay()];
   let time1arr = [];
   let time2arr = [];

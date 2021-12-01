@@ -32,7 +32,7 @@ app.use('/shuttle', shuttleRouter);
 
 
 
-
+/*
 // error handler
 app.use((err, req, res, next) => {
     // set locals, only providing error in development
@@ -42,6 +42,7 @@ app.use((err, req, res, next) => {
     res.render(err.status || 500);
     res.send('error');
 });
+*/
 
 
 let port = process.env.PORT;
