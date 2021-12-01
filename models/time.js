@@ -2,9 +2,6 @@ exports.isShuttleOperational = (finalArray, statusArr) => {
   var retArr = [];
   var finalArray2 = [];
 
-  console.log(finalArray[3]);
-  console.log(finalArray[4]);
-
   finalArray2.push(finalArray[0]);
   finalArray2.push(finalArray[3]);
   finalArray2.push(finalArray[4]);
@@ -45,7 +42,6 @@ function checkShuttleBreak(finalArray, statusArr) {
   var arrivalHour = parseInt(finalArray[2].slice(0, 2));
   var arrivalMinute = parseInt(finalArray[2].slice(3));
 
-  console.log(statusArr[2]);
   const break1StartHour = parseInt(statusArr[2].slice(0, 2));
   const break1StartMinute = parseInt(statusArr[2].slice(3));
   const break1EndHour = parseInt(statusArr[3].slice(0, 2));

@@ -16,15 +16,14 @@ weekday[6] = "sat";
 
 exports.shuttle_times_scheduled_get = (req, res) => {
   var scheduledTime = String(req.params.id_4);
-  console.log(typeof scheduledTime);
   var scheduledHours = Number(scheduledTime.substring(0, 2));
   var scheduledMin = Number(scheduledTime.substring(3, 5));
   var date = new Date();
-  console.log(date.getDay());
+
   var day = weekday[date.getDay()];
   date.setHours(scheduledHours);
   date.setMinutes(scheduledMin);
-  console.log(date.getTime());
+
   let time1arr = [];
   let time2arr = [];
   let statusTimesArr = [];
@@ -36,28 +35,26 @@ exports.shuttle_times_scheduled_get = (req, res) => {
     day
   )
     .then((statusTimes) => {
-      console.log(statusTimes.toString());
+
       statusTimesArr.push(statusTimes[0]);
       statusTimesArr.push(statusTimes[1]);
       statusTimesArr.push(statusTimes[2]);
       statusTimesArr.push(statusTimes[3]);
       statusTimesArr.push(statusTimes[4]);
       statusTimesArr.push(statusTimes[5]);
-      console.log(statusTimesArr[2]);
+
 
       return Database.query(
         `Select * from ${req.params.id} where stopLoc = \'${req.params.id_2}\'`
       );
     })
     .then((times) => {
-      //console.log(times[0]);
-      //console.log(times[1]);
+
 
       time1arr.push(times[0]);
       time1arr.push(times[1]);
       time1arr.push(times[2]);
-      console.log(time1arr[0]);
-      console.log(times[2]);
+
 
       return Database.query(
         `Select * from ${req.params.id} where stopLoc = \'${req.params.id_3}\'`
@@ -65,22 +62,21 @@ exports.shuttle_times_scheduled_get = (req, res) => {
     })
     .then(
       (times2) => {
-        //console.log(times2[0]);
+
         time2arr.push(times2[0]);
         time2arr.push(times2[1]);
         time2arr.push(times2[2]);
       },
       (err) => {
         Database.close().then(() => {
-          console.log(err);
+
         });
       }
     )
     .then(() => {
       departArray = getDepartTime(date, time1arr);
       arrivalArray = getArrivalTime(departArray, time2arr);
-      console.log(departArray[1]);
-      console.log(arrivalArray[1]);
+
 
       finalArray.push(departArray[0]);
       finalArray.push(departArray[1]);
@@ -159,7 +155,7 @@ function getNormalTime(times) {
 
 exports.shuttle_times_get = function (req, res) {
   var date = new Date();
-  console.log(date.getDay());
+
   var day = weekday[date.getDay()];
   let time1arr = [];
   let time2arr = [];
@@ -172,28 +168,26 @@ exports.shuttle_times_get = function (req, res) {
     day
   )
     .then((statusTimes) => {
-      console.log(statusTimes.toString());
+
       statusTimesArr.push(statusTimes[0]);
       statusTimesArr.push(statusTimes[1]);
       statusTimesArr.push(statusTimes[2]);
       statusTimesArr.push(statusTimes[3]);
       statusTimesArr.push(statusTimes[4]);
       statusTimesArr.push(statusTimes[5]);
-      console.log(statusTimesArr[2]);
+
 
       return Database.query(
         `Select * from ${req.params.id} where stopLoc = \'${req.params.id_2}\'`
       );
     })
     .then((times) => {
-      console.log(times[0]);
-      console.log(times[1]);
+
 
       time1arr.push(times[0]);
       time1arr.push(times[1]);
       time1arr.push(times[2]);
-      console.log(time1arr[0]);
-      console.log(times[2]);
+
 
       return Database.query(
         `Select * from ${req.params.id} where stopLoc = \'${req.params.id_3}\'`
@@ -201,7 +195,7 @@ exports.shuttle_times_get = function (req, res) {
     })
     .then(
       (times2) => {
-        console.log(times2[0]);
+
         time2arr.push(times2[0]);
         time2arr.push(times2[1]);
         time2arr.push(times2[2]);
@@ -221,9 +215,6 @@ exports.shuttle_times_get = function (req, res) {
       finalArray.push(arrivalArray[1]);
       finalArray.push(departArray[2]);
       finalArray.push(arrivalArray[2]);
-
-      console.log(departArray[2]);
-      console.log(arrivalArray[2]);
 
       statusBoolArr = isShuttleOperational(finalArray, statusTimesArr);
 
