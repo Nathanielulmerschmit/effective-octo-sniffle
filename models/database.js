@@ -16,7 +16,6 @@ class Database{
                 if (err) 
                     return reject (err);
                 var times = [];
-                console.log(rows);
                 times.push(rows[0].time1);
                 times.push(rows[0].time2);
                 times.push(rows[0].time3);
@@ -30,8 +29,6 @@ class Database{
                 if (err) 
                     return reject (err);
                 var statusTimes = [];
-                console.log(rows);
-                console.log(args);
                 if (args == 'mon') {
                     statusTimes.push(rows[0].monStart);
                     statusTimes.push(rows[0].monEnd);
@@ -65,8 +62,6 @@ class Database{
                 statusTimes.push(rows[0].main1End);
                 statusTimes.push(rows[0].main2Start);
                 statusTimes.push(rows[0].main2End);
-
-                console.log(statusTimes.toString());
 
                 resolve( statusTimes );
             })
