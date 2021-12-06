@@ -36,6 +36,8 @@ exports.shuttle_times_scheduled_get = (req, res) => {
   )
     .then((statusTimes) => {
 
+      console.log(statusTimes);
+
       statusTimesArr.push(statusTimes[0]);
       statusTimesArr.push(statusTimes[1]);
       statusTimesArr.push(statusTimes[2]);
@@ -50,6 +52,7 @@ exports.shuttle_times_scheduled_get = (req, res) => {
     })
     .then((times) => {
 
+      console.log(times);
 
       time1arr.push(times[0]);
       time1arr.push(times[1]);
@@ -80,6 +83,7 @@ exports.shuttle_times_scheduled_get = (req, res) => {
 
       finalArray.push(departArray[0]);
       finalArray.push(departArray[1]);
+      console.log(arrivalArray[1]);
       finalArray.push(arrivalArray[1]);
       finalArray.push(departArray[2]);
       finalArray.push(arrivalArray[2]);

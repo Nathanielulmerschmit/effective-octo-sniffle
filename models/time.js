@@ -80,15 +80,15 @@ function checkShuttleBreak(finalArray, statusArr) {
   break2EndDate.setHours(break2EndHour);
   break2EndDate.setMinutes(break2EndMinute);
 
-  if (departDate > break1StartDate && departDate < break1EndDate) {
+  if (departDate >= break1StartDate && departDate < break1EndDate) {
     return false;
-  } else if (arrivalDate > break1StartDate && arrivalDate < break1EndDate) {
+  } else if (arrivalDate > break1StartDate && arrivalDate <= break1EndDate) {
     return false;
   }
 
-  if (departDate > break2StartDate && departDate < break2EndDate) {
+  if (departDate >= break2StartDate && departDate < break2EndDate) {
     return false;
-  } else if (arrivalDate > break2StartDate && arrivalDate < break2EndDate) {
+  } else if (arrivalDate > break2StartDate && arrivalDate <= break2EndDate) {
     return false;
   }
   return true;
@@ -135,7 +135,9 @@ function checkShuttleClosed(finalArray, statusArr) {
   return true;
 }
 
+
 exports.getDepartTime = (date, timeArray) => {
+
   let hours = date.getHours();
   let nextHour = hours + 1;
   let minutes = date.getMinutes();
@@ -171,7 +173,7 @@ exports.getDepartTime = (date, timeArray) => {
 
     departHour2 = hours;
     departMinute2 = timeArray[1];
-  } else if (minutes < timeArray[1] && timeArray[1] - minutes >= 5) {
+  } else if (minutes < timeArray[1]) {
     if (timeArray[1] < 10) {
       leaveTime = hours + ":0" + timeArray[1];
     } else {
@@ -185,9 +187,9 @@ exports.getDepartTime = (date, timeArray) => {
       }
     } else {
       if (timeArray[0] < 10) {
-        leaveTime2 = hours + ":0" + timeArray[0];
+        leaveTime2 = nextHour + ":0" + timeArray[0];
       } else {
-        leaveTime2 = hours + ":" + timeArray[0];
+        leaveTime2 = nextHour + ":" + timeArray[0];
       }
     }
 
@@ -196,7 +198,7 @@ exports.getDepartTime = (date, timeArray) => {
 
     departHour2 = hours;
     departMinute2 = timeArray[2];
-  } else if (minutes < timeArray[2] && timeArray[2] - minutes >= 5) {
+  } else if (minutes < timeArray[2]) {
     if (timeArray[2] < 10) {
       leaveTime = hours + ":0" + timeArray[2];
     } else {
@@ -279,6 +281,9 @@ exports.getArrivalTime = (departArray, timeArray) => {
   let hours = departArray[3];
   let nextHour = hours + 1;
   let minutes = departArray[4];
+  console.log(departArray);
+  console.log(timeArray);
+  console.log(minutes);
   let leaveTime = "";
   let leaveTime2 = "";
   let departHour;
@@ -287,8 +292,6 @@ exports.getArrivalTime = (departArray, timeArray) => {
   let departMinute2;
   const returnArray = [];
 
-  hours.toString();
-  nextHour.toString();
 
   if (minutes < timeArray[0]) {
     if (timeArray[0] < 10) {
@@ -313,19 +316,19 @@ exports.getArrivalTime = (departArray, timeArray) => {
       leaveTime = hours + ":" + timeArray[1];
     }
     if (timeArray[2] !== null) {
-    if (timeArray[2] < 10) {
-      leaveTime2 = hours + ":0" + timeArray[2];
-    } else {
-      leaveTime2 = hours + ":" + timeArray[2];
-    }
-}
-else {
-    if (timeArray[0] < 10) {
-        leaveTime2 = hours + ":0" + timeArray[0];
+      if (timeArray[2] < 10) {
+        leaveTime2 = hours + ":0" + timeArray[2];
       } else {
-        leaveTime2 = hours + ":" + timeArray[0];
+        leaveTime2 = hours + ":" + timeArray[2];
       }
-}
+    } 
+    else {
+      if (timeArray[0] < 10) {
+        leaveTime2 = nextHour + ":0" + timeArray[0];
+      } else {
+        leaveTime2 = nextHour + ":" + timeArray[0];
+      }
+    }
 
     departHour = hours;
     departMinute = timeArray[1];
@@ -350,6 +353,11 @@ else {
     departHour2 = nextHour;
     departMinute2 = timeArray[0];
   } else if (minutes >= timeArray[2]) {
+    if (timeArray[0] >= 10) {
+      leaveTime = nextHour + ":" + timeArray[0];
+    } else {
+      leaveTime = nextHour + ":0" + timeArray[0];
+    }
     if (timeArray[1] < 10) {
       leaveTime2 = nextHour + ":0" + timeArray[1];
     } else {
