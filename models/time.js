@@ -256,7 +256,7 @@ exports.getDepartTime = (date, timeArray) => {
 
   returnArray.push(originalHours);
 
-  if (originalHours > 12 || departHour >= 12) {
+  if (originalHours > 12 || departHour1 >= 12) {
     returnArray.push(`${leaveTime} PM`);
   } else {
     returnArray.push(`${leaveTime} AM`);
