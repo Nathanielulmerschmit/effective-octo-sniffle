@@ -250,19 +250,19 @@ exports.getDepartTime = (date, timeArray) => {
     departHour = nextHour;
     departMinute = timeArray[1];
 
-    epartHour2 = nextHour;
+    departHour2 = nextHour;
     departMinute2 = timeArray[2];
   }
 
   returnArray.push(originalHours);
 
-  if (originalHours > 12) {
+  if (originalHours > 12 || departHour1 >= 12) {
     returnArray.push(`${leaveTime} PM`);
   } else {
     returnArray.push(`${leaveTime} AM`);
   }
 
-  if (originalHours > 12) {
+  if (originalHours > 12 || departHour2 >= 12) {
     returnArray.push(`${leaveTime2} PM`);
   } else {
     returnArray.push(`${leaveTime2} AM`);
@@ -390,13 +390,19 @@ exports.getArrivalTime = (departArray, timeArray) => {
 
   returnArray.push(originalHours);
 
-  if (originalHours > 12) {
+  if (originalHours > 12 || departHour >= 12) {
     returnArray.push(`${leaveTime} PM`);
-    returnArray.push(`${leaveTime2} PM`);
   } else {
     returnArray.push(`${leaveTime} AM`);
+  }
+
+  if (originalHours > 12 || departHour2 >= 12) {
+    returnArray.push(`${leaveTime2} PM`);
+  } else {
     returnArray.push(`${leaveTime2} AM`);
   }
+
+
   returnArray.push(departHour);
   returnArray.push(departMinute);
   returnArray.push(departHour2);
