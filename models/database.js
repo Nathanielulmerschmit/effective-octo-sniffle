@@ -16,7 +16,6 @@ class Database{
                 if (err) 
                     return reject (err);
                 var times = [];
-                console.log(rows[0]);
                 times.push(rows[0].time1);
                 times.push(rows[0].time2);
                 times.push(rows[0].time3);
